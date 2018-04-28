@@ -16,8 +16,8 @@
 
 let
   # Import libraries
-  util    = import ~/proj/nix-util;
-  nixpkgs = import (util.pin-nixpkgs { inherit rev sha256; }) { config = nix-config; };
+  pin-it  = import ./pin-nixpkgs.nix;
+  nixpkgs = import (pin-it { inherit rev sha256; }) { config = nix-config; };
 
   # Define easy shortcuts
   lib     = nixpkgs.pkgs.haskell.lib;
