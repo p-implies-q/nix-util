@@ -3,10 +3,10 @@
 If you're here looking for a solution to get haskell development working well
 and comfortably, behold the result of my struggles!
 
-Given a simple haskell project with a cabal-file, use cabal2nix to autogenerate
-a nix-derivation describing the project. Then pass the path to that nix
-expression to hask-proj to generate a development environment. Here is a small
-example:
+Given a simple haskell project with a cabal-file, use `cabal2nix . >
+my-proj.nix` in the project directory to autogenerate a nix-derivation
+describing the project. Then pass the path to that nix expression to hask-proj
+to generate a development environment. Here is a small example:
 
 `default.nix`
 ```
@@ -27,3 +27,10 @@ in
 ```
 (import ./default.nix).env
 ```
+
+Note that this is not a finished product at all. I'd like to add profiling and
+hoogle flags to make this extra-simple, but I haven't got the time for that
+anytime soon. At the moment, if you want to fine-tune the setting up of a
+haskell development environment, you're probably best off just editing the
+`hask-proj.nix` function, or if you're better at Nix than I am (not too hard,
+very new to this) just hand-roll your own setup.
